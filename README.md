@@ -203,7 +203,7 @@ http://localhost:5173/
 
 ## 🌐 Deployed Application
 
-You can access the live Streamlit app here:
+You can access the live site here:
 **[https://vercel.com/darshan0106s-projects/live-polling-system/FeHsD2dxo6cRABJRoJ3QsvJzYpVW](https://vercel.com/darshan0106s-projects/live-polling-system/FeHsD2dxo6cRABJRoJ3QsvJzYpVW)**
 
 ---
