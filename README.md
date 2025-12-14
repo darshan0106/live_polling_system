@@ -204,7 +204,7 @@ http://localhost:5173/
 ## 🌐 Deployed Application
 
 You can access the live Streamlit app here:
-**[https://darshan0106-car-price-predictor-app-crx1nh.streamlit.app/](https://darshan0106-car-price-predictor-app-crx1nh.streamlit.app/)**
+**[https://vercel.com/darshan0106s-projects/live-polling-system/FeHsD2dxo6cRABJRoJ3QsvJzYpVW](https://vercel.com/darshan0106s-projects/live-polling-system/FeHsD2dxo6cRABJRoJ3QsvJzYpVW)**
 
 ---
 
