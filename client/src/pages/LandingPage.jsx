@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { socket } from "../socket";
 import { setUser, setRole } from "../store/uiSlice";
-import clsx from "clsx"; // effectively toggles classes
+import clsx from "clsx";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const [selectedRole, setSelectedRole] = useState(null); // 'student' | 'teacher' | null
+  const [selectedRole, setSelectedRole] = useState(null);
 
   const handleContinue = () => {
-    if (!selectedRole) return; // Do nothing if nothing selected
+    if (!selectedRole) return;
 
     if (selectedRole === "teacher") {
       dispatch(setUser({ role: "teacher", name: "Teacher" }));
       socket.emit("join:teacher");
     } else {
-      // Move to Name Entry screen
       dispatch(setRole("student_pending"));
     }
   };

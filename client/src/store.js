@@ -3,7 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const appSlice = createSlice({
   name: "app",
   initialState: {
-    role: null, // 'teacher' | 'student'
+    role: null,
     name: "",
     connected: false,
     kicked: false,
@@ -31,10 +31,10 @@ const appSlice = createSlice({
 const pollSlice = createSlice({
   name: "poll",
   initialState: {
-    current: null, // { question, options, timeLeft, active }
+    current: null,
     history: [],
     hasVoted: false,
-    participants: [], // For teacher
+    participants: [],
   },
   reducers: {
     setPoll: (state, action) => {

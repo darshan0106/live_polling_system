@@ -1,9 +1,7 @@
 const store = require("../store/memoryStore");
 
 module.exports = (io, socket) => {
-  // Create a new poll (Teacher only)
   const createPoll = ({ question, options, timeLimit }) => {
-    // Prevent creating if one is already active
     if (store.currentPoll?.active) return;
 
     store.currentPoll = {
@@ -53,7 +51,6 @@ module.exports = (io, socket) => {
       store.currentPoll.options[optionIndex].votes += 1;
       store.currentPoll.totalVotes += 1;
 
-      // Broadcast updated results immediately
       io.emit("poll:updated", store.currentPoll);
     }
   };

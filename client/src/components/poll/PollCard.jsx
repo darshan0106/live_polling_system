@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
 
-// Added selectedOption prop here
 export const PollCard = ({ onVote, isTeacher, selectedOption }) => {
   const { currentPoll, hasVoted } = useSelector((state) => state.poll);
 
@@ -10,7 +9,6 @@ export const PollCard = ({ onVote, isTeacher, selectedOption }) => {
 
   const { question, options, timeLeft, active, totalVotes } = currentPoll;
 
-  // Show results logic remains the same
   const showResults = isTeacher || hasVoted || timeLeft === 0 || !active;
 
   return (
@@ -40,22 +38,20 @@ export const PollCard = ({ onVote, isTeacher, selectedOption }) => {
             totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
           const letter = String.fromCharCode(65 + idx);
 
-          // Check if this specific option is selected (Local state)
           const isSelected = selectedOption === idx;
 
           return (
             <button
               key={idx}
-              // Allow clicking if active and not yet voted
               disabled={isTeacher || hasVoted || !active || timeLeft === 0}
               onClick={() => onVote && onVote(idx)}
               className={clsx(
                 "relative w-full h-14 rounded-lg border overflow-hidden text-left group transition-all",
                 hasVoted
-                  ? "cursor-default border-gray-200" // Voted state
+                  ? "cursor-default border-gray-200"
                   : isSelected
-                  ? "border-primary bg-primary/5 ring-1 ring-primary" // Selected but not submitted (Purple highlight)
-                  : "border-gray-200 hover:border-secondary hover:bg-gray-50" // Default hover state
+                  ? "border-primary bg-primary/5 ring-1 ring-primary"
+                  : "border-gray-200 hover:border-secondary hover:bg-gray-50"
               )}
             >
               {/* Result Bar Background */}
@@ -83,7 +79,7 @@ export const PollCard = ({ onVote, isTeacher, selectedOption }) => {
                       showResults
                         ? "bg-secondary text-white"
                         : isSelected
-                        ? "bg-primary text-white" // Purple badge when selected
+                        ? "bg-primary text-white"
                         : "bg-gray-200 text-gray-600 group-hover:bg-secondary group-hover:text-white"
                     )}
                   >

@@ -7,12 +7,10 @@ import clsx from "clsx";
 
 export default function TeacherDashboard() {
   const { currentPoll, history } = useSelector((state) => state.poll);
-  const [view, setView] = useState("create"); // 'create' | 'history'
+  const [view, setView] = useState("create");
 
-  // Controls when to show the "Create Form" vs "Live/Result View"
   const [isCreating, setIsCreating] = useState(false);
 
-  // Form State
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState([
     { text: "", isCorrect: false },
@@ -20,7 +18,6 @@ export default function TeacherDashboard() {
   ]);
   const [timeLimit, setTimeLimit] = useState(60);
 
-  // Auto-switch to Live View when a poll starts
   useEffect(() => {
     if (currentPoll?.active) {
       setIsCreating(false);
@@ -257,7 +254,6 @@ const CreateForm = ({
   </div>
 );
 
-// Updated History List with "Question 1, 2, 3..." headers
 const HistoryList = ({ history }) => (
   <div className="space-y-8">
     {history.length === 0 && (

@@ -21,14 +21,10 @@ export default function App() {
   const dispatch = useDispatch();
 
   const fullState = useSelector((state) => state);
-  console.log("FULL REDUX STATE:", fullState);
 
-  // --- DEBUGGING LINE ---
-  // Watch your console. If "role" stays null, the store is broken.
   const uiState = useSelector((state) => state.ui);
-  console.log("APP State Check:", uiState);
 
-  const { role, isKicked, name } = uiState || {}; // Safe destructuring
+  const { role, isKicked, name } = uiState || {};
 
   useEffect(() => {
     // --- Socket Listeners ---
@@ -54,13 +50,10 @@ export default function App() {
     return () => socket.off();
   }, [dispatch, role]);
 
-  // --- ROUTING LOGIC ---
   if (isKicked) return <KickedScreen />;
 
-  // If role is null, we show LandingPage
   if (!role) return <LandingPage />;
 
-  // If student pending, show NameEntry
   if (role === "student_pending") return <NameEntry />;
 
   return (

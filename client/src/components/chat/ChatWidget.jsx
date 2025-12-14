@@ -6,7 +6,7 @@ import clsx from "clsx";
 export const ChatWidget = ({ userName, isTeacher }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [msgText, setMsgText] = useState("");
-  const [activeTab, setActiveTab] = useState("chat"); // 'chat' | 'participants'
+  const [activeTab, setActiveTab] = useState("chat");
 
   const { messages, participants } = useSelector((state) => state.ui);
 
@@ -137,15 +137,14 @@ export const ChatWidget = ({ userName, isTeacher }) => {
                         {p.name} {p.name === userName && "(You)"}
                       </span>
                     </div>
-                    {isTeacher &&
-                      p.id !== socket.id && ( // Don't kick yourself
-                        <button
-                          onClick={() => kickStudent(p.id)}
-                          className="text-xs text-red-500 hover:underline"
-                        >
-                          Kick
-                        </button>
-                      )}
+                    {isTeacher && p.id !== socket.id && (
+                      <button
+                        onClick={() => kickStudent(p.id)}
+                        className="text-xs text-red-500 hover:underline"
+                      >
+                        Kick
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>

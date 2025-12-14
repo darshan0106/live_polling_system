@@ -39,5 +39,4 @@ export const {
   addToHistory,
 } = pollSlice.actions;
 
-// CHANGE THIS LINE: Named export
 export const pollReducer = pollSlice.reducer;

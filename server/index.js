@@ -24,12 +24,10 @@ io.on("connection", (socket) => {
   // Teacher Join
   socket.on("join:teacher", () => {
     store.teacherId = socket.id;
-    // Send initial state to teacher
     socket.emit("init:state", {
       history: store.polls,
       currentPoll: store.currentPoll,
     });
-    // Send participant list
     io.emit("participants:update", Object.values(store.students));
   });
 
@@ -43,16 +41,15 @@ io.on("connection", (socket) => {
   // Kick Student (Teacher only)
   socket.on("kick:student", (socketId) => {
     if (store.students[socketId]) {
-      io.to(socketId).emit("student:kicked"); // Notify student
-      io.sockets.sockets.get(socketId)?.disconnect(true); // Force disconnect
+      io.to(socketId).emit("student:kicked");
+      io.sockets.sockets.get(socketId)?.disconnect(true);
       delete store.students[socketId];
-      io.emit("participants:update", Object.values(store.students)); // Update list
+      io.emit("participants:update", Object.values(store.students));
     }
   });
 
   // --- Chat ---
   socket.on("chat:send", (payload) => {
-    // payload: { text, sender, time }
     io.emit("chat:receive", payload);
   });
 

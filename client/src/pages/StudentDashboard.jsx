@@ -9,7 +9,6 @@ const StudentDashboard = () => {
   const { currentPoll, hasVoted } = useSelector((state) => state.poll);
   const dispatch = useDispatch();
 
-  // Local state to track which option is currently selected (but not submitted)
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleSelectOption = (index) => {
@@ -20,7 +19,7 @@ const StudentDashboard = () => {
     if (selectedOption !== null) {
       socket.emit("poll:vote", selectedOption);
       dispatch(markVoted());
-      setSelectedOption(null); // Cleanup
+      setSelectedOption(null);
     }
   };
 
@@ -34,7 +33,7 @@ const StudentDashboard = () => {
     <div className="w-full max-w-4xl mt-10 px-4 flex flex-col items-center">
       <PollCard
         onVote={handleSelectOption}
-        selectedOption={selectedOption} // Pass the selection state for styling
+        selectedOption={selectedOption}
         isTeacher={false}
       />
 

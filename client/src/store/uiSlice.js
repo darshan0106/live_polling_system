@@ -34,5 +34,4 @@ const uiSlice = createSlice({
 export const { setUser, setRole, setKicked, updateParticipants, addMessage } =
   uiSlice.actions;
 
-// CHANGE THIS LINE: Named export
 export const uiReducer = uiSlice.reducer;
